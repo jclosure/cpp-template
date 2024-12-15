@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Python script to plot outputs of Google Benchmark in CSV format
 # By Ari Saif
 # ------------------------------------------------------------------------------
@@ -63,7 +64,7 @@ print(df)
 
 # Unstack data from various benchmarks and put them in new columns
 dfs = [
-    g.drop('name', 1).add_suffix(f'_{k}').rename({f'n_{k}': 'n'}, axis=1)
+    g.drop('name', axis=1).add_suffix(f'_{k}').rename({f'n_{k}': 'n'}, axis=1)
     for k, g in df.groupby('name')
 ]
 

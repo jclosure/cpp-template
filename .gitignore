@@ -1,8 +1,28 @@
-/bazel-Bazel_with_GTest
-/bazel-bin
-/bazel-genfiles
-/bazel-out
-/bazel-testlogs
-/bazel-template
-/bazel-*
 *.md2
+
+# Bazel output directories
+bazel-*
+
+# Common build artifacts (if they appear)
+*.o
+*.lo
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+
+# Editor and OS-specific files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# CMake / Autotools artifacts (if ever used transiently)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Other caches or temporary files
+.cache/

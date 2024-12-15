@@ -2,6 +2,10 @@
   "configurations": [
     {
       "name": "Mac",
+      "compileCommands": "${workspaceFolder}/compile_commands.json",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "macos-clang-x64",
       "includePath": [
         "${workspaceFolder}/src/lib",
         "${workspaceFolder}/src/lib/*",

@@ -3,10 +3,10 @@
  * showcasing the usage of GLog library 
  * By: Ari Saif
  */
+
 #include "glog/logging.h"
 #include "glog/stl_logging.h"
 
-#include <iostream>
 #include <map>
 #include <vector>
 bool g_cond = true;
@@ -16,10 +16,10 @@ void MyFunction() {
   // FLAGS_log_prefix = false;
   std::vector<int> my_vector = {1, 2, 3, 4};
   std::map<int, int> my_map = {{1, 2}, {2, 3}};
-
+  
   LOG(INFO) << "Printing my_vector: "
             << "{" << my_vector << "}";
-
+  
   LOG(INFO) << "Printing a my_map " << my_map;
   LOG(WARNING) << "This is a warning message";
   LOG(INFO) << "Hello, world again!";

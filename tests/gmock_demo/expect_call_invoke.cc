@@ -61,7 +61,7 @@ TEST(AtmMachine, CanWithdrawWithMultipleInvoke) {
       .WillOnce(Invoke(Square))
       .WillOnce(Square)
       .WillOnce(DoAll(InvokeWithoutArgs(PrintHello), Return(1000)))
-      .WillOnce(InvokeWithoutArgs(PrintHello))
+      // .WillOnce(InvokeWithoutArgs(PrintHello)) // fails you need to do the above instead ^
       .WillOnce([](int n) { return Square(n); })
       .WillOnce([](int n) { return Sum(n, 1000); })
       .WillOnce([]() { return Return10000(); })

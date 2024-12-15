@@ -132,4 +132,9 @@
     "CodeLLDB"
   ],
   "editor.mouseWheelZoom": true,
+  "clangd.arguments": [
+    "--header-insertion=never",
+    "--compile-commands-dir=${workspaceFolder}/",
+    "--query-driver=**"
+  ]
 }

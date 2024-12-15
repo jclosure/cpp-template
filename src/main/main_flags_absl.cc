@@ -28,5 +28,6 @@ int main(int argc, char *argv[]) {
               << ": ";
   }
   std::cout << absl::GetFlag(FLAGS_message) << std::endl;
+  
   return 0;
 }

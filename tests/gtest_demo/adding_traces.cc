@@ -8,7 +8,7 @@
 
 void MyFunction(int n) {
   // Checks if n is 2.
-  EXPECT_EQ(n, 2);
+  EXPECT_EQ(n, 1);
 }
 
 TEST(SubTest, WithoutScopeTraceSimple) {

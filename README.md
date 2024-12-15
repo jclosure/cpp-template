@@ -21,7 +21,7 @@ You can use this template for most of your C++ projects with minimal changes.
 <table><tr><td>
 
 <a href="https://youtu.be/JfOzsBi_irY">
-<img border="5" alt="C++ starter repo for Bazel & Visual Studio Code with GTest, Glog and Abseil" src="https://raw.githubusercontent.com/ourarash/cpp-template/master/abseil_thumbnail_play.png" width="400">
+<img border="5" alt="C++ starter repo for Bazel & Visual Studio Code with GTest, Glog and Abseil" src="https://raw.githubusercontent.com/jclosure/cpp-template/master/abseil_thumbnail_play.png" width="400">
 </a>
 </td></tr></table>
 
@@ -33,7 +33,7 @@ You can install Bazel using this [link](https://docs.bazel.build/versions/master
 ## Cloning this repo
 
 ```bash
-git clone https://github.com/ourarash/cpp-template.git
+git clone https://github.com/jclosure/cpp-template.git
 ```
 
 ## Examples:
@@ -94,7 +94,7 @@ Output:
 
 <table><tr><td>
 
-<img border="5" alt="Google Sanitizer Demo" src="https://raw.githubusercontent.com/ourarash/cpp-template/master/asan_demo.png" width="800">
+<img border="5" alt="Google Sanitizer Demo" src="https://raw.githubusercontent.com/jclosure/cpp-template/master/asan_demo.png" width="800">
 
 </td></tr></table>
 
@@ -123,7 +123,7 @@ Output:
 
 <table><tr><td>
 
-<img border="5" alt="Google Sanitizer Demo" src="https://raw.githubusercontent.com/ourarash/cpp-template/master/ubsan_demo.png" width="800">
+<img border="5" alt="Google Sanitizer Demo" src="https://raw.githubusercontent.com/jclosure/cpp-template/master/ubsan_demo.png" width="800">
 
 </td></tr></table>
 
@@ -134,7 +134,7 @@ Here is a video that explains more about how to use Google Test with Bazel in Vi
 <table><tr><td>
 
 <a href="https://www.youtube.com/watch?v=0wMNtl2xDT0/">
-<img border="5" alt="Bazel & Google Test in Visual Studio Code" src="https://raw.githubusercontent.com/ourarash/cpp-template/master/bazel_yt.png" width="400">
+<img border="5" alt="Bazel & Google Test in Visual Studio Code" src="https://raw.githubusercontent.com/jclosure/cpp-template/master/bazel_yt.png" width="400">
 </a>
 </td></tr></table>
 
@@ -144,8 +144,22 @@ A sample test file is [tests/cpplib_test.cc](tests/cpplib_test.cc) which uses [t
 
 You can run the test using [`bazel`](installing-bazel):
 
+Run a specific test
+
 ```bash
-bazel test tests:tests
+bazel test //tests:cpplib_test
+```
+
+Run all the gtests
+
+```bash
+bazel test //tests/gtest_demo:all
+```
+
+Run all the gmock tests
+
+```bash
+bazel test //tests/gmock_demo:all
 ```
 
 # More info on GLOG
@@ -178,6 +192,12 @@ int main(int argc, char* argv[]) {
 
   return 0;
 }
+```
+
+Run the `main_logger` target with:
+
+```bash
+bazel run src/main:main_logger
 ```
 
 # More Info On Abseil Library:
@@ -230,6 +250,57 @@ Abseil contains the following C++ library components:
 - [`utility`](https://github.com/abseil/abseil-cpp/tree/master/absl/utility/)
   <br /> The `utility` library contains utility and helper code.
 
+Run the `main_flags_abseil` target:
+
+```bash
+bazel run src/main:main_flags_absl
+```
+
+# Intellisense in Visual Studio Code
+
+Currently, intellisense depends on [bazel-compile-commands-extractor](https://github.com/hedronvision/bazel-compile-commands-extractor) to create a compile_commands.json.
+
+Generate compile_commands.json as follows:
+
+```bash
+bazel run @hedron_compile_commands//:refresh_all
+```
+
+Now open `./src/main/main_logger.cc`.  
+
+`glog` should resolve:
+
+```cpp
+#include "glog/logging.h"
+```
+
+>IMPORTANT: Anytime you add new packages, refresh compile_commands.json as shown.
+
+Note that `.vscode/c_cpp_properties.json` is configured to pickup the `compile_commands.json`. 
+
+Modify c_cpp_properties.json as needed, example:
+
+```json
+{
+  "configurations": [
+    {
+      "name": "Mac",
+      "compileCommands": "${workspaceFolder}/compile_commands.json",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "macos-clang-x64",
+      "includePath": [
+        "${workspaceFolder}/src/lib",
+        "${workspaceFolder}/src/lib/*",
+        "/usr/local/include",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/"
+      ]
+    }
+  ],
+  "version": 4
+}
+```
+
 # Debugging with Bazel and Visual Studio Code
 
 ## Build for debug:
@@ -245,7 +316,7 @@ Visual Studio Code's [launch.json](.vscode/launch.json) file is currently set so
 <table><tr><td>
 
 <a href="https://www.youtube.com/watch?v=0wMNtl2xDT0/">
-<img border="5" alt="Debugging C++ in Visual Studio Code using gcc/gdb and Bazel" src="https://raw.githubusercontent.com/ourarash/cpp-template/master/VSCDebug_yt.png" width="400">
+<img border="5" alt="Debugging C++ in Visual Studio Code using gcc/gdb and Bazel" src="https://raw.githubusercontent.com/jclosure/cpp-template/master/VSCDebug_yt.png" width="400">
 </a>
 </td></tr></table>
 

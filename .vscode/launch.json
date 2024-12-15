@@ -12,7 +12,7 @@
       "program": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/__main__",
+      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/_main",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
@@ -25,7 +25,7 @@
       "program": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/__main__",
+      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/_main",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
@@ -38,7 +38,7 @@
       "program": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/__main__",
+      "cwd": "${workspaceFolder}/bazel-bin/${relativeFileDirname}/${fileBasenameNoExtension}.runfiles/_main",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
