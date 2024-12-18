@@ -72,6 +72,45 @@ cc_binary(
     ],
 )
 
+# Supported Platforms
+config_setting(
+    name = "darwin",
+    constraint_values = ["@platforms//os:osx"],
+)
+
+config_setting(
+    name = "linux",
+    constraint_values = ["@platforms//os:linux"],
+)
+
+cc_binary(
+    name = "main_sdl",
+    srcs = ["main_sdl.cc"],
+    linkopts = select({
+        ":darwin": [
+            "-framework Cocoa",
+            "-framework CoreHaptics",
+            "-framework CoreVideo",
+            "-framework ForceFeedback",
+            "-framework GameController",
+            "-framework IOKit",
+            "-framework Carbon",
+            "-framework Metal",
+        ],
+        ":linux": ["-ldl"],
+    }),
+    deps = [
+        "@sdl",
+        "@abseil-cpp//absl/log:absl_log",
+        "@abseil-cpp//absl/log:globals",
+        "@abseil-cpp//absl/log:initialize",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+        "@glm"
+    ]
+)
+
+
 # load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 # refresh_compile_commands(
 #     name = "refresh_compile_commands",
