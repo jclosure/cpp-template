@@ -111,6 +111,30 @@ cc_binary(
 )
 
 
+
+cc_binary(
+    name = "main_filament",
+    srcs = ["main_filament.cpp"],
+    deps = [
+        "@filament",
+        # Add other filament libs as needed
+        "@sdl",
+    ],
+    linkopts = select({
+        ":darwin": [
+            "-framework Cocoa",
+            "-framework CoreHaptics",
+            "-framework CoreVideo",
+            "-framework ForceFeedback",
+            "-framework GameController",
+            "-framework IOKit",
+            "-framework Carbon",
+            "-framework Metal",
+        ],
+        ":linux": ["-ldl"],
+    }),
+)
+
 # load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
 # refresh_compile_commands(
 #     name = "refresh_compile_commands",

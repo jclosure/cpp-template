@@ -15,6 +15,8 @@ bazel_dep(name = "abseil-cpp", version = "20240722.0.bcr.2")
 bazel_dep(name = "google_benchmark", version = "1.8.5")
 bazel_dep(name = "gflags", version = "2.2.2")
 bazel_dep(name = "zlib", version = "1.3.1.bcr.3")
+bazel_dep(name = "rules_foreign_cc", version = "0.12.0") # support foreign build systems
+# bazel_dep(name = "rules_python", version = "1.0.0")
 
 # Load and use the local_repos extension
 # use_extension("//:local_repos.bzl", "local_repos")
@@ -23,7 +25,6 @@ bazel_dep(name = "zlib", version = "1.3.1.bcr.3")
 # use_repo("usr_local")
 
 # Graphics related
-bazel_dep(name = "rules_foreign_cc", version = "0.12.0") # support foreign build systems
 bazel_dep(name = "glm", version = "1.0.0.bcr.1")
 
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
@@ -35,6 +36,14 @@ http_archive(
     strip_prefix = "SDL-release-2.30.9",
 )
 
+# NOTE: prebuilt for now
+# TODO: upgrade to: https://github.com/google/filament/releases/tag/v1.56.4
+http_archive(
+    name = "filament",
+    urls = ["https://github.com/google/filament/archive/refs/tags/v1.56.4.tar.gz"],
+    strip_prefix = "filament-1.56.4",
+    build_file = "@//third_party:com_github_filament.BUILD"
+)
 
 # Dev dependencies
 bazel_dep(name = "platforms", version = "0.0.10", dev_dependency = True)
